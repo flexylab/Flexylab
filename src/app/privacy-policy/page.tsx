@@ -27,7 +27,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-bold text-white mb-4">1. Introduction</h2>
               <p>
-                Flexylab ("we", "us", "our", or "Company") operates the Flexylab website (the "Site"). This Privacy Policy explains our data collection, use, and disclosure practices.
+                Flexylab (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;, or &quot;Company&quot;) operates the Flexylab website (the &quot;Site&quot;). This Privacy Policy explains our data collection, use, and disclosure practices.
               </p>
             </section>
 

@@ -41,7 +41,7 @@ export default function TermsOfServicePage() {
                 <li>Using the materials for any commercial purpose or for any public display</li>
                 <li>Attempting to decompile or reverse engineer any software contained on the Site</li>
                 <li>Removing any copyright or other proprietary notations from the materials</li>
-                <li>Transferring the materials to another person or "mirroring" the materials on any other server</li>
+                <li>Transferring the materials to another person or &quot;mirroring&quot; the materials on any other server</li>
               </ul>
             </section>
 
