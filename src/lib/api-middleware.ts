@@ -1,17 +1,35 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyToken, TokenPayload } from './jwt';
-import { RateLimiter } from 'next-rate-limit';
 
-// Rate limiter configuration
-const limiter = new RateLimiter({
-  interval: 60 * 1000, // 1 minute
-  maxRequests: 30, // 30 requests per minute
-});
+// Simple in-memory rate limiter
+const requestMap = new Map<string, { count: number; resetTime: number }>();
 
 export async function withRateLimit(request: NextRequest, handler: Function) {
   try {
     const clientIp = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-    // Rate limiting would be applied here (simplified for demo)
+    const now = Date.now();
+    const ONE_MINUTE = 60 * 1000;
+    const MAX_REQUESTS = 30;
+
+    // Get or create rate limit entry
+    let entry = requestMap.get(clientIp);
+    
+    if (!entry || now > entry.resetTime) {
+      entry = { count: 0, resetTime: now + ONE_MINUTE };
+      requestMap.set(clientIp, entry);
+    }
+
+    // Check if exceeded limit
+    if (entry.count >= MAX_REQUESTS) {
+      return NextResponse.json(
+        { error: 'Too many requests' },
+        { status: 429 }
+      );
+    }
+
+    // Increment counter
+    entry.count++;
+
     return await handler(request);
   } catch (error) {
     console.error('Rate limit error:', error);
