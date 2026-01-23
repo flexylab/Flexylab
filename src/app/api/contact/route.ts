@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.error('Contact form error:', error);
-    logSecurityError('CONTACT_FORM_ERROR', error.message, undefined, body?.email);
+    logSecurityError('CONTACT_FORM_ERROR', error.message, undefined, undefined);
     return NextResponse.json(
       { error: 'Failed to send message. Please try again later.' },
       { status: 500 }

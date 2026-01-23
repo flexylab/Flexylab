@@ -4,6 +4,7 @@ import User from '@/models/User';
 import { SignupSchema } from '@/lib/validation';
 import { generateToken } from '@/lib/jwt';
 import { logSecurityEvent, logSecurityError } from '@/lib/audit-log';
+import bcrypt from 'bcryptjs';
 
 export async function POST(request: NextRequest) {
   try {
@@ -25,10 +26,14 @@ export async function POST(request: NextRequest) {
 
     const verificationCode = Math.random().toString(36).substring(2, 8).toUpperCase();
     
+    // Hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(validated.password, salt);
+    
     // Create new user
     const newUser = new User({
       email: validated.email.toLowerCase(),
-      password: validated.password,
+      password: hashedPassword,
       name: validated.name,
       phone: validated.phone || '',
       isVerified: false,
@@ -85,7 +90,7 @@ export async function POST(request: NextRequest) {
     );
   } catch (error: any) {
     if (error.name === 'ZodError') {
-      logSecurityError('SIGNUP_VALIDATION_FAILED', error.errors[0].message, undefined, body?.email);
+      logSecurityError('SIGNUP_VALIDATION_FAILED', error.errors[0].message, undefined, undefined);
       return NextResponse.json(
         { error: error.errors[0].message },
         { status: 400 }
@@ -93,7 +98,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.error('Signup error:', error);
-    logSecurityError('SIGNUP_ERROR', error.message, undefined, body?.email);
+    logSecurityError('SIGNUP_ERROR', error.message, undefined, undefined);
     return NextResponse.json(
       { error: 'Failed to create account' },
       { status: 500 }

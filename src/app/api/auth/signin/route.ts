@@ -85,7 +85,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.error('Signin error:', error);
-    logSecurityError('SIGNIN_ERROR', error.message, undefined, body?.email);
+    logSecurityError('SIGNIN_ERROR', error.message, undefined, undefined);
     return NextResponse.json(
       { error: 'Failed to sign in' },
       { status: 500 }

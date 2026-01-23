@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
     }
 
     console.error('Verification error:', error);
-    logSecurityError('VERIFY_ERROR', error.message, undefined, body?.email);
+    logSecurityError('VERIFY_ERROR', error.message, undefined, undefined);
     return NextResponse.json(
       { error: 'Failed to verify email' },
       { status: 500 }

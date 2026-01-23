@@ -111,7 +111,6 @@ const OrganicCard: React.FC<OrganicCardProps> = ({ product, onAddToCart }) => {
       viewport={{ once: true }}
       animate={{ y: [0, -15, 0] }}
       whileHover={{ y: -20 }}
-      whileInViewOnce={{ y: [0, -15, 0] }}
     >
       {/* Organic blob background */}
       <div

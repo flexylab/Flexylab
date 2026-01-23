@@ -50,16 +50,6 @@ const UserSchema = new Schema<IUser>(
   { timestamps: true }
 );
 
-// Hash password before saving
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    next();
-  }
-
-  const salt = await bcrypt.genSalt(10);
-  const hash = await bcrypt.hash(this.password, salt);
-  this.password = hash;
-});
 
 // Method to compare passwords
 UserSchema.methods.comparePassword = async function (
