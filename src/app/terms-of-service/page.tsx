@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import Link from 'next/link'
@@ -48,7 +49,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-bold text-white mb-4">3. Disclaimer</h2>
               <p>
-                The materials on Flexylab are provided on an 'as is' basis. Flexylab makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
+                The materials on Flexylab are provided on an &apos;as is&apos; basis. Flexylab makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
               </p>
             </section>
 

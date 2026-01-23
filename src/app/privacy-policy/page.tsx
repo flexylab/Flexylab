@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 'use client'
 
 import Link from 'next/link'
@@ -103,7 +104,7 @@ export default function PrivacyPolicyPage() {
             <section>
               <h2 className="text-2xl font-bold text-white mb-4">9. Policy Updates</h2>
               <p>
-                We may update this Privacy Policy periodically. Changes will be posted on this page with an updated "Last Modified" date. Your continued use of the Site constitutes acceptance of updated policies.
+                We may update this Privacy Policy periodically. Changes will be posted on this page with an updated &quot;Last Modified&quot; date. Your continued use of the Site constitutes acceptance of updated policies.
               </p>
             </section>
 
