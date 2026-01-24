@@ -6,6 +6,8 @@ import { generateToken } from '@/lib/jwt';
 import { logSecurityEvent, logSecurityError } from '@/lib/audit-log';
 import bcrypt from 'bcryptjs';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(request: NextRequest) {
   try {
     // Validate input

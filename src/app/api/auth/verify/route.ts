@@ -3,7 +3,7 @@ import connectDB from '@/lib/mongodb';
 import User from '@/models/User';
 import { VerifyEmailSchema } from '@/lib/validation';
 import { logSecurityEvent, logSecurityError } from '@/lib/audit-log';
-
+export const dynamic = 'force-dynamic';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
