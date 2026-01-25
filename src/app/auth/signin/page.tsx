@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
+// Don't prerender - uses auth context
+export const dynamic = 'force-dynamic';
+
 export default function SigninPage() {
   const router = useRouter();
   const { signin } = useAuth();

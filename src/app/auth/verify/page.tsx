@@ -5,6 +5,9 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useEffect, Suspense } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
+// Don't prerender this page
+export const dynamic = 'force-dynamic';
+
 function VerifyContent() {
   const router = useRouter();
   const searchParams = useSearchParams();

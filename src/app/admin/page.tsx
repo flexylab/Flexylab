@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
+// Don't prerender - admin protected page
+export const dynamic = 'force-dynamic';
+
 interface User {
   id: string;
   email: string;

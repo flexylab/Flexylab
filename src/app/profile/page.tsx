@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 
+// Don't prerender - auth protected page
+export const dynamic = 'force-dynamic';
+
 export default function ProfilePage() {
   const { user, isLoading, logout, updateProfile } = useAuth();
   const router = useRouter();

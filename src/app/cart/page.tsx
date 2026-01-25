@@ -5,6 +5,9 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
 import { useRouter } from 'next/navigation';
 
+// Don't prerender this page - depends on user auth state
+export const dynamic = 'force-dynamic';
+
 interface CartItem {
   id: string;
   name: string;
