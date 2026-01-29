@@ -6,6 +6,9 @@ import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useAuth } from '@/context/AuthContext'
 
+// Don't prerender - uses router and auth context
+export const dynamic = 'force-dynamic';
+
 interface Product {
   id: number
   name: string
